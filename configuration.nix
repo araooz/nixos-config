@@ -12,7 +12,7 @@
 # Use the systemd-boot EFI boot loader.
   boot.loader = {
   efi = {
-    canTouchEfiVariables = true;
+    canTouchEfiVariables = false;
     efiSysMountPoint = "/boot"; # O donde esté tu partición EFI
   };
   grub = {
