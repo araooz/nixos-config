@@ -20,6 +20,16 @@
     device = "nodev"; # "nodev" es para instalaciones UEFI/EFI
     efiSupport = true;
     useOSProber = true; # <--- ESTO ES LO MÁS IMPORTANTE
+    extraConfig = "GRUB_DISABLE_OS_PROBER=false";
+    gfxmodeEfi = "1920x1080";
+
+    theme = pkgs.fetchFromGitHub {
+      owner = "AllJavi";
+      repo = "tartarus-grub";
+      rev = "b116360a2a0991062a4d728cb005dfd309fbb82a";
+      sha256 = "sha256-/Pzr0R3zzOXUi2pAl8Lvg6aHTiwXTIrxQ1vscbEK/kU="; 
+    } + "/tartarus";
+
   };
   systemd-boot.enable = false;
 };
@@ -49,6 +59,7 @@
 
 # Habilitar el login automático para el usuario falo
 services.getty.autologinUser = "falo";
+boot.loader.timeout = 2;
 #y ejecutar hyprland de una
 environment.loginShellInit = ''
   if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
@@ -172,21 +183,12 @@ xdg.portal = {
   programs.nix-ld.enable = true;
 
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  
 
   nix.settings.auto-optimise-store = true;
 
 
 
-  system.stateVersion = "25.11"; # Did you read the comment?
+  system.stateVersion = "25.11";
 }
 
 
