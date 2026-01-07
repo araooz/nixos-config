@@ -157,13 +157,16 @@ xdg.portal = {
 # modo oscuro
   qt.enable = true;
   qt.platformTheme = "qt5ct";
-  qt.style = "adwaita-dark";
 
 # Esto ayuda a que las apps GTK3/4 sepan que prefieres el modo oscuro
-  environment.sessionVariables = {
-    GTK_THEME = "Adwaita:dark";
-    ADW_DISABLE_PORTAL = "1"; # Opcional, para forzar en algunas apps de GNOME
-  };
+#  environment.sessionVariables = {
+#    GTK_THEME = "Adwaita:dark";
+#    ADW_DISABLE_PORTAL = "1";
+#    # Forzar que Qt use la configuración que acabas de guardar
+#    QT_QPA_PLATFORMTHEME = "qt6ct"; 
+#    # Opcional: Ayuda a que Dolphin se vea mejor en Wayland
+#    QT_QPA_PLATFORM = "wayland";
+#  };
 
 #para que nixos pueda ejecutar binarios externos (mason)
   programs.nix-ld.enable = true;
